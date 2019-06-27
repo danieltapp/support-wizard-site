@@ -3,7 +3,7 @@ import _ from 'lodash';
 // import Step from "./components/Step";
 import AppList from "./components/AppList";
 import IssueList from "./components/IssueList";
-import { Container, Icon, Segment, Step } from "semantic-ui-react";
+import { Container, Icon, Segment, Step, Button } from "semantic-ui-react";
 import "./App.css";
 
 const apps = {
@@ -23,6 +23,8 @@ const apps = {
     }
   ]
   }} 
+
+apps.PAMM.issues.map(issue => console.log(issue))
 
 _.mapValues(apps, app => {
 
@@ -99,7 +101,11 @@ function App() {
           ) :
           (
             <Segment attached>
-            <div>Yippe Skippe</div>
+            <IssueList issues={apps.PAMM.issues} />
+            <Button onClick={() => setActiveStep(steps[0])} icon labelPosition="left">
+              Go Back
+              <Icon name="arrow alternate circle left outline" />
+            </Button> 
             </Segment>
           )
         }
