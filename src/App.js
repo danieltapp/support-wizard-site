@@ -5,6 +5,7 @@ import AppList from "./components/AppList";
 import IssueList from "./components/IssueList";
 import { Container, Icon, Segment, Step, Button } from "semantic-ui-react";
 import "./App.css";
+import Solution from "./components/Solution";
 
 const apps = {
   PAMM : {
@@ -21,18 +22,45 @@ const apps = {
       owner : 'RPCC Developers',
       solution : 'Submit PME SF ticket to the development team'
     }
+  ]},
+  ELSA : {
+    name : 'ELSA',
+    url : 'applications.levelone.com/pamm',
+    issues : [
+    {
+      desc : 'PK information is incorrect',
+      owner : 'RPCC Help Desk',
+      solution : 'Submit ticket to the helpdesk'
+    },
+    {
+      desc : 'Integrated pricing issue',
+      owner : 'RPCC Developers',
+      solution : 'Submit PME SF ticket to the development team'
+    }
+  ]},
+  MEDS : {
+    name : 'MEDS',
+    url : 'applications.levelone.com/pamm',
+    issues : [
+    {
+      desc : 'Integrated work order not working',
+      owner : 'RPCC Help Desk',
+      solution : 'Submit ticket to the helpdesk'
+    },
+    {
+      desc : 'Dispatch issue',
+      owner : 'RPCC Developers',
+      solution : 'Submit PME SF ticket to the development team'
+    },
+    {
+      desc : "Snake in da' comode!",
+      owner : 'RPCC Developers',
+      solution : 'Submit PME SF ticket to the development team'
+    }
   ]
   }} 
 
-apps.PAMM.issues.map(issue => console.log(issue))
 
-_.mapValues(apps, app => {
-
-  app.issues.map(
-    issue => console.log(`${issue.desc} in ${app.name} (${app.url})? "${issue.solution}" - ${issue.owner}.`)
-  )
-  
-})
 
 function App() {
   //state to determine if step is active
@@ -45,18 +73,24 @@ function App() {
 
   //state to determine which app is selected
   const [selectedApp, setSelectedApp] = useState('')
+  const [selectedIssue, setSelectedIssue] = useState('')
 
-  //state to determine which segment to attach
+
 
   //handlers
 
-  const appSelection = (e) => {
+  const appSelection = (app) => {
+    setSelectedApp(app)
     setActiveStep(steps[steps.indexOf(activeStep) + 1])
   }
 
-  const issueSelection = (e) => {
+  const issueSelection = (issue) => {
+    setSelectedIssue(issue)
     setActiveStep(steps[steps.indexOf(activeStep) + 1])
+    console.log(selectedIssue)
   }
+
+  console.log(selectedApp)
 
   return (
     <div className="App">
@@ -96,18 +130,28 @@ function App() {
         {
           activeStep == 'selectApp' ? (
             <Segment attached>
-            <AppList appSelection={appSelection} />
+            <AppList apps={apps} appSelection={appSelection} />
             </Segment>
-          ) :
+          ) : activeStep == 'selectIssue' ?
           (
             <Segment attached>
-            <IssueList issues={apps.PAMM.issues} />
+            <IssueList issues={apps[selectedApp].issues} setSelectedIssue={issueSelection} />
             <Button onClick={() => setActiveStep(steps[0])} icon labelPosition="left">
               Go Back
               <Icon name="arrow alternate circle left outline" />
             </Button> 
             </Segment>
-          )
+          ) :
+            (
+              <Segment attached>
+                <Solution issue={selectedIssue}/>
+                <Button onClick={() => setActiveStep(steps[0])} icon labelPosition="left">
+                Go Back
+                <Icon name="arrow alternate circle left outline" />
+              </Button> 
+              </Segment>
+            )
+
         }
 
 

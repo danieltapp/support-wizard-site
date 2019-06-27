@@ -7,7 +7,7 @@ export default (props) => (
       props.issues.map( issue => {
         return (
           <React.Fragment>
-          <List.Item>
+          <List.Item onClick={() => props.setSelectedIssue(issue)}>
           <Icon name='arrow alternate circle right outline' color='orange' />
           <List.Content>
             <List.Header>{issue.desc}</List.Header>
