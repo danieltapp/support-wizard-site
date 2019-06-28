@@ -2,8 +2,9 @@ import React from 'react'
 import { Image, Item} from 'semantic-ui-react'
 
 export default (props) => (
+    <Item.Group>
     <Item>
-      <Item.Image size='tiny' src='https://cdn.realpage.com/images/rp-logo-dots.svg' />
+      <Image size='tiny' src='https://cdn.realpage.com/images/rp-logo-dots.svg' />
 
       <Item.Content>
         <Item.Header as='a'>{props.issue.desc}</Item.Header>
@@ -13,5 +14,6 @@ export default (props) => (
         </Item.Description>
       </Item.Content>
     </Item>
+    </Item.Group>
 )
 
