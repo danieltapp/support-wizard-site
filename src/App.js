@@ -80,7 +80,7 @@ const apps = {
         solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       },
       {
-        desc: "Dispatch issue",
+        desc: "Af fanny pack readymade, food truck thundercats wolf kale chips listicle YOLO squid pickled heirloom man bun hella.",
         owner: "RPCC Developers",
         solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       },
