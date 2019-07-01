@@ -1,19 +1,28 @@
-import React from 'react'
-import { Image, Item} from 'semantic-ui-react'
+import React from "react";
+import useClipboard from "react-use-clipboard";
+import { Item, Button, Popup } from "semantic-ui-react";
 
-export default (props) => (
+export default props => {
+  const [isCopied, setCopied] = useClipboard(props.issue.solution);
+
+  return (
     <Item.Group>
-    <Item>
-      <Image size='tiny' src='https://cdn.realpage.com/images/rp-logo-dots.svg' />
+      <Item>
+        <Item.Content>
+          <Item.Header as="a">{props.issue.desc}</Item.Header>
+          <Item.Meta>Solution Owner : {props.issue.owner}</Item.Meta>
+          <Item.Description>
+            <p>{props.issue.solution}</p>
 
-      <Item.Content>
-        <Item.Header as='a'>{props.issue.desc}</Item.Header>
-        <Item.Meta>Solution Owner : {props.issue.owner}</Item.Meta>
-        <Item.Description>
-          <p>{props.issue.solution}</p>
-        </Item.Description>
-      </Item.Content>
-    </Item>
+            <Popup
+              content={isCopied ? "Copied" : "Copy to Clipboard"}
+              trigger={<Button icon="copy outline" onClick={setCopied} />}
+            />
+          </Item.Description>
+        </Item.Content>
+      </Item>
     </Item.Group>
-)
+  );
+};
+
 

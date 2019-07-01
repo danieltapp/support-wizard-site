@@ -10,7 +10,8 @@ import {
   Segment,
   Step,
   Button,
-  Progress
+  Progress,
+  Label
 } from "semantic-ui-react";
 import "./App.css";
 import Solution from "./components/Solution";
@@ -23,12 +24,12 @@ const apps = {
       {
         desc: "PK information is incorrect",
         owner: "RPCC Help Desk",
-        solution: "Submit ticket to the helpdesk"
+        solution: "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
       },
       {
         desc: "Integrated pricing issue",
         owner: "RPCC Developers",
-        solution: "Submit PME SF ticket to the development team"
+        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
     ]
   },
@@ -37,14 +38,14 @@ const apps = {
     url: "applications.levelone.com/pamm",
     issues: [
       {
-        desc: "PK information is incorrect",
+        desc: "Af fanny pack readymade, food truck thundercats wolf kale chips listicle YOLO squid pickled heirloom man bun hella.",
         owner: "RPCC Help Desk",
-        solution: "Submit ticket to the helpdesk"
+        solution: "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
       },
       {
-        desc: "Integrated pricing issue",
+        desc: "OLO raclette heirloom knausgaard. Pickled tattooed etsy, pug green juice coloring book sriracha cold-pressed post-ironic williamsburg helvetica.",
         owner: "RPCC Developers",
-        solution: "Submit PME SF ticket to the development team"
+        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
     ]
   },
@@ -55,17 +56,38 @@ const apps = {
       {
         desc: "Integrated work order not working",
         owner: "RPCC Help Desk",
-        solution: "Submit ticket to the helpdesk"
+        solution: "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
       },
       {
         desc: "Dispatch issue",
         owner: "RPCC Developers",
-        solution: "Submit PME SF ticket to the development team"
+        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       },
       {
         desc: "Snake in da' comode!",
         owner: "RPCC Developers",
-        solution: "Submit PME SF ticket to the development team"
+        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
+      }
+    ]
+  },
+  Portal: {
+    name: "Portal",
+    url: "portal.levelone.com",
+    issues: [
+      {
+        desc: "Integrated work order not working",
+        owner: "RPCC Help Desk",
+        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
+      },
+      {
+        desc: "Dispatch issue",
+        owner: "RPCC Developers",
+        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
+      },
+      {
+        desc: "Snake in da' comode!",
+        owner: "RPCC Developers",
+        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
     ]
   }
@@ -94,17 +116,14 @@ function App() {
     setSelectedIssue(issue);
     setActiveStep(steps[steps.indexOf(activeStep) + 1]);
     updatePercent(percent + 55);
-    console.log(selectedIssue);
   };
 
-  console.log(selectedApp);
-
   return (
-    <div className="App" style={{marginTop : '2rem'}}>
-    <Header as='h2' icon textAlign='center'>
-    <Icon name='wizard' circular />
-    <Header.Content>RPCC Support Wizard</Header.Content>
-  </Header>
+    <div className="App" style={{ marginTop: "2rem" }}>
+      <Header as="h2" icon textAlign="center">
+        <Icon name="wizard" circular />
+        <Header.Content>RPCC Support Wizard</Header.Content>
+      </Header>
       <Container>
         <Step.Group attached="top" pointing>
           <Step active={activeStep === steps[0] ? true : false}>
@@ -141,39 +160,38 @@ function App() {
 
         <Segment>
           {activeStep == "selectApp" ? (
-            <Segment attached>
+            <Segment color="orange" attached>
               <AppList apps={apps} appSelection={appSelection} />
             </Segment>
           ) : activeStep == "selectIssue" ? (
-            <Segment attached>
+            <Segment color="orange" attached>
               <IssueList
                 issues={apps[selectedApp].issues}
                 setSelectedIssue={issueSelection}
               />
-              <Button
+
+              <Label
+                as="a"
+                content="Back"
+                icon="arrow alternate circle left outline"
                 onClick={() => {
                   setActiveStep(steps[0]);
                   updatePercent(0);
                 }}
-                icon
-                labelPosition="left"
-              >
-                <Icon name="arrow alternate circle left outline" />
-              </Button>
+              />
             </Segment>
           ) : (
-            <Segment attached>
+            <Segment color="orange" attached>
               <Solution issue={selectedIssue} />
-              <Button
+              <Label
+                as="a"
+                content="Back"
+                icon="arrow alternate circle left outline"
                 onClick={() => {
-                  updatePercent(0);
                   setActiveStep(steps[0]);
+                  updatePercent(0);
                 }}
-                icon
-                labelPosition="left"
-              >
-                <Icon name="arrow alternate circle left outline" />
-              </Button>
+              />
             </Segment>
           )}
         </Segment>
@@ -182,9 +200,5 @@ function App() {
     </div>
   );
 }
-
-// <Segment attached>
-// <IssueList />
-// </Segment>
 
 export default App;
