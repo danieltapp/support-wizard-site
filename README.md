@@ -2,8 +2,9 @@ RPCC SUPPORT WIZARD
 
 To get started :
 
-1) Run 'npm install' to install all neccessary dependencies. 
-2) Then 'npm start' to run the project in the browser (by default on port 3000)
+1) Navigate to the 'support-wizard-site' directory
+2) Run 'npm install' to install all neccessary dependencies. 
+3) Then 'npm start' to run the project in the browser (by default on port 3000)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

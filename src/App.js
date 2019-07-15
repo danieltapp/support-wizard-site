@@ -15,6 +15,27 @@ import {
 } from "semantic-ui-react";
 import "./App.css";
 import Solution from "./components/Solution";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider, Query } from "react-apollo";
+import gql from "graphql-tag";
+
+const client = new ApolloClient({
+  uri: "https://api-euwest.graphcms.com/v1/cjxg1fmjc00e801emotoeu8h2/master"
+});
+
+const APP_QUERY = gql`
+  query apps {
+    issues {
+      app
+    }
+  }
+`;
+
+client
+  .query({
+    query: APP_QUERY
+  })
+  .then(res => console.log(res));
 
 const apps = {
   PAMM: {
@@ -24,12 +45,14 @@ const apps = {
       {
         desc: "PK information is incorrect",
         owner: "RPCC Help Desk",
-        solution: "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
+        solution:
+          "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
       },
       {
         desc: "Integrated pricing issue",
         owner: "RPCC Developers",
-        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
+        solution:
+          "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
     ]
   },
@@ -38,14 +61,18 @@ const apps = {
     url: "applications.levelone.com/pamm",
     issues: [
       {
-        desc: "Af fanny pack readymade, food truck thundercats wolf kale chips listicle YOLO squid pickled heirloom man bun hella.",
+        desc:
+          "Af fanny pack readymade, food truck thundercats wolf kale chips listicle YOLO squid pickled heirloom man bun hella.",
         owner: "RPCC Help Desk",
-        solution: "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
+        solution:
+          "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
       },
       {
-        desc: "OLO raclette heirloom knausgaard. Pickled tattooed etsy, pug green juice coloring book sriracha cold-pressed post-ironic williamsburg helvetica.",
+        desc:
+          "OLO raclette heirloom knausgaard. Pickled tattooed etsy, pug green juice coloring book sriracha cold-pressed post-ironic williamsburg helvetica.",
         owner: "RPCC Developers",
-        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
+        solution:
+          "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
     ]
   },
@@ -56,17 +83,20 @@ const apps = {
       {
         desc: "Integrated work order not working",
         owner: "RPCC Help Desk",
-        solution: "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
+        solution:
+          "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
       },
       {
         desc: "Dispatch issue",
         owner: "RPCC Developers",
-        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
+        solution:
+          "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       },
       {
         desc: "Snake in da' comode!",
         owner: "RPCC Developers",
-        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
+        solution:
+          "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
     ]
   },
@@ -77,17 +107,21 @@ const apps = {
       {
         desc: "Integrated work order not working",
         owner: "RPCC Help Desk",
-        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
+        solution:
+          "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       },
       {
-        desc: "Af fanny pack readymade, food truck thundercats wolf kale chips listicle YOLO squid pickled heirloom man bun hella.",
+        desc:
+          "Af fanny pack readymade, food truck thundercats wolf kale chips listicle YOLO squid pickled heirloom man bun hella.",
         owner: "RPCC Developers",
-        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
+        solution:
+          "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       },
       {
         desc: "Snake in da' comode!",
         owner: "RPCC Developers",
-        solution: "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
+        solution:
+          "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
     ]
   }
@@ -119,85 +153,94 @@ function App() {
   };
 
   return (
-    <div className="App" style={{ marginTop: "2rem" }}>
-      <Header as="h2" icon textAlign="center">
-        <Icon name="wizard" circular />
-        <Header.Content>RPCC Support Wizard</Header.Content>
-      </Header>
-      <Container>
-        <Step.Group attached="top" pointing>
-          <Step active={activeStep === steps[0] ? true : false}>
-            <Step.Content>
-              <Step.Title>Select Application</Step.Title>
-              <Step.Description>
-                Which application do you need assistance with?
-              </Step.Description>
-            </Step.Content>
-          </Step>
+    <ApolloProvider client={client}>
+      <div className="App" style={{ marginTop: "2rem" }}>
+        <Header as="h2" icon textAlign="center">
+          <Icon name="wizard" circular />
+          <Header.Content>RPCC Support Wizard</Header.Content>
+        </Header>
+        <Container>
+          <Step.Group attached="top" pointing>
+            <Step active={activeStep === steps[0] ? true : false}>
+              <Step.Content>
+                <Step.Title>Select Application</Step.Title>
+                <Step.Description>
+                  Which application do you need assistance with?
+                </Step.Description>
+              </Step.Content>
+            </Step>
 
-          <Step
-            id="selectIssue"
-            active={activeStep === steps[1] ? true : false}
-          >
-            <Step.Content>
-              <Step.Title>Select Issue</Step.Title>
-              <Step.Description>
-                What are you needing assistance with?
-              </Step.Description>
-            </Step.Content>
-          </Step>
+            <Step
+              id="selectIssue"
+              active={activeStep === steps[1] ? true : false}
+            >
+              <Step.Content>
+                <Step.Title>Select Issue</Step.Title>
+                <Step.Description>
+                  What are you needing assistance with?
+                </Step.Description>
+              </Step.Content>
+            </Step>
 
-          <Step id="solution" active={activeStep === steps[2] ? true : false}>
-            <Step.Content>
-              <Step.Title>Solution</Step.Title>
-              <Step.Description>
-                Instructions on how to troubleshoot issue & request assistance
-                from the solution owner.
-              </Step.Description>
-            </Step.Content>
-          </Step>
-        </Step.Group>
+            <Step id="solution" active={activeStep === steps[2] ? true : false}>
+              <Step.Content>
+                <Step.Title>Solution</Step.Title>
+                <Step.Description>
+                  Instructions on how to troubleshoot issue & request assistance
+                  from the solution owner.
+                </Step.Description>
+              </Step.Content>
+            </Step>
+          </Step.Group>
 
-        <Segment>
-          {activeStep == "selectApp" ? (
-            <Segment color="orange" attached>
-              <AppList apps={apps} appSelection={appSelection} />
-            </Segment>
-          ) : activeStep == "selectIssue" ? (
-            <Segment color="orange" attached>
-              <IssueList
-                issues={apps[selectedApp].issues}
-                setSelectedIssue={issueSelection}
-              />
+          <Segment>
+            {activeStep == "selectApp" ? (
+              <Segment color="orange" attached>
+                <Query query={APP_QUERY}>
+                  {({ loading, data }) => {
+                    if (loading) return "Loading...";
+                    const { issues } = data;
+                    const appList = _.uniq(issues.map(issue => issue.app))
+                    return <AppList appList={appList} appSelection={appSelection} />;
+                  }}
+                </Query>
+              </Segment>
+            ) : activeStep == "selectIssue" ? (
+              <Segment color="orange" attached>
+                <IssueList
+                  issues={apps[selectedApp].issues}
+                  setSelectedIssue={issueSelection}
+                />
 
-              <Label
-                as="a"
-                content="Back"
-                icon="arrow alternate circle left outline"
-                onClick={() => {
-                  setActiveStep(steps[0]);
-                  updatePercent(0);
-                }}
-              />
-            </Segment>
-          ) : (
-            <Segment color="orange" attached>
-              <Solution issue={selectedIssue} />
-              <Label
-                as="a"
-                content="Back"
-                icon="arrow alternate circle left outline"
-                onClick={() => {
-                  setActiveStep(steps[0]);
-                  updatePercent(0);
-                }}
-              />
-            </Segment>
-          )}
-        </Segment>
-        <Progress percent={percent} indicating />
-      </Container>
-    </div>
+                <Label
+                  as="a"
+                  content="Back"
+                  icon="arrow alternate circle left outline"
+                  onClick={() => {
+                    setActiveStep(steps[0]);
+                    updatePercent(0);
+                  }}
+                />
+              </Segment>
+            ) : (
+              <Segment color="orange" attached>
+                <Solution issue={selectedIssue} />
+                <Label
+                  as="a"
+                  content="Back"
+                  icon="arrow alternate circle left outline"
+                  onClick={() => {
+                    setActiveStep(steps[0]);
+                    updatePercent(0);
+                  }}
+                />
+              </Segment>
+            )}
+          </Segment>
+          <Progress percent={percent} indicating />
+        </Container>
+      </div>
+    </ApolloProvider>
   );
 }
 
