@@ -10,7 +10,7 @@ export default (props) => (
           <List.Item onClick={() => props.setSelectedIssue(issue)}>
           <Icon name='arrow alternate circle right outline' color='orange' />
           <List.Content>
-            <List.Header>{issue}</List.Header>
+            <List.Header>{issue.desc}</List.Header>
           </List.Content>
         </List.Item>
           </React.Fragment>

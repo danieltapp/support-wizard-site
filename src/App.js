@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
-// import Step from "./components/Step";
 import AppList from "./components/AppList";
 import IssueList from "./components/IssueList";
 import {
@@ -18,7 +17,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider, Query } from "react-apollo";
 import gql from "graphql-tag";
 import { apolloUri } from './api'
-import { testApps } from './testData'
+
 
 const client = new ApolloClient({
   uri: apolloUri
@@ -31,21 +30,16 @@ const APP_QUERY = gql`
       desc
       solution
       owner
+      id
     }
   }
 `;
-
-
 
 client
   .query({
     query: APP_QUERY
   })
   .then(res => console.log(res));
-
-
-//Dummy data
-const apps = testApps
 
 function App() {
   //state to determine if step is active
@@ -132,10 +126,9 @@ function App() {
                 if (loading) return "Loading...";
                 const { issues } = data;
                 const issueList = issues.map((issue) => {
-                   if (issue.app === selectedApp) return issue.desc 
-                   
+                   if (issue.app === selectedApp) 
+                   return issue 
                 })
-                console.log(issueList)
                 return <IssueList issues={issueList} setSelectedIssue={issueSelection} />;
               }}
             </Query>
@@ -153,16 +146,7 @@ function App() {
               </Segment>
             ) : (
               <Segment color="orange" attached>
-              <Query query={APP_QUERY}>
-              {({ loading, data }) => {
-                if (loading) return "Loading...";
-                const { issues } = data;
-                // const issue = 
-                // console.log(issueList)
-                return <Solution issue={selectedIssue} />
-              }}
-            </Query>
-             
+                <Solution issue={selectedIssue} />
                 <Label
                   as="a"
                   content="Back"

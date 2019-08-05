@@ -1,13 +1,9 @@
 import React from "react";
 import { Icon, List } from "semantic-ui-react";
-import _ from "lodash";
-
 
 export default props => {
 
   const uuid4 = require('uuid4')
-
-  console.log(props.appList)
 
   return (
     <List animated verticalAlign="middle">
