@@ -9,7 +9,6 @@ import {
   Icon,
   Segment,
   Step,
-  Button,
   Progress,
   Label
 } from "semantic-ui-react";
@@ -199,7 +198,7 @@ function App() {
           </Step.Group>
 
           <Segment>
-            {activeStep == "selectApp" ? (
+            {activeStep === "selectApp" ? (
               <Segment color="orange" attached>
                 <Query query={APP_QUERY}>
                   {({ loading, data }) => {
@@ -210,7 +209,7 @@ function App() {
                   }}
                 </Query>
               </Segment>
-            ) : activeStep == "selectIssue" ? (
+            ) : activeStep === "selectIssue" ? (
               <Segment color="orange" attached>
                 <IssueList
                   issues={apps[selectedApp].issues}
