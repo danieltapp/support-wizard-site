@@ -18,9 +18,10 @@ import Solution from "./components/Solution";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider, Query } from "react-apollo";
 import gql from "graphql-tag";
+import { apolloUri } from './api'
 
 const client = new ApolloClient({
-  uri: "https://api-euwest.graphcms.com/v1/cjxg1fmjc00e801emotoeu8h2/master"
+  uri: apolloUri
 });
 
 const APP_QUERY = gql`
