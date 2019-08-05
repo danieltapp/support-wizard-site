@@ -31,70 +31,74 @@ const APP_QUERY = gql`
   }
 `;
 
+
+
 client
   .query({
     query: APP_QUERY
   })
   .then(res => console.log(res));
 
+
+//Dummy data
 const apps = {
-  PAMM: {
-    name: "PAMM",
-    url: "applications.levelone.com/pamm",
+  BasketballStats: {
+    name: "BasketballStats",
+    url: "dtapp.com/basketball-stats/",
     issues: [
       {
-        desc: "PK information is incorrect",
-        owner: "RPCC Help Desk",
+        desc: "Shot percentage information is incorrect",
+        owner: "Help Desk",
         solution:
           "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
       },
       {
         desc: "Integrated pricing issue",
-        owner: "RPCC Developers",
+        owner: "Developers",
         solution:
           "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
     ]
   },
-  ELSA: {
-    name: "ELSA",
-    url: "applications.levelone.com/pamm",
+  BasketballJerseys: {
+    name: "BasketballJerseys",
+    url: "dtapp.com/basketball-jerseys",
     issues: [
       {
         desc:
           "Af fanny pack readymade, food truck thundercats wolf kale chips listicle YOLO squid pickled heirloom man bun hella.",
-        owner: "RPCC Help Desk",
+        owner: "Help Desk",
         solution:
           "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
       },
       {
         desc:
           "OLO raclette heirloom knausgaard. Pickled tattooed etsy, pug green juice coloring book sriracha cold-pressed post-ironic williamsburg helvetica.",
-        owner: "RPCC Developers",
+        owner: "Developers",
         solution:
           "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
     ]
   },
-  MEDS: {
-    name: "MEDS",
-    url: "applications.levelone.com/pamm",
+  SneakerStats: {
+    name: "SneakerStats",
+    url: "dtapp.com/sneaker-stats",
     issues: [
       {
         desc: "Integrated work order not working",
-        owner: "RPCC Help Desk",
+        owner: "Help Desk",
         solution:
           "Four dollar toast meh bicycle rights cold-pressed seitan iPhone fashion axe organic. Viral pitchfork butcher salvia small batch hammock. +1 man braid small batch everyday carry, iPhone lyft yr narwhal literally chambray leggings cornhole hashtag knausgaard kinfolk. "
       },
       {
         desc: "Dispatch issue",
-        owner: "RPCC Developers",
+        owner: "Developers",
         solution:
           "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       },
       {
         desc: "Snake in da' comode!",
-        owner: "RPCC Developers",
+        owner: "Developers",
         solution:
           "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
@@ -102,24 +106,24 @@ const apps = {
   },
   Portal: {
     name: "Portal",
-    url: "portal.levelone.com",
+    url: "dtapp.com",
     issues: [
       {
         desc: "Integrated work order not working",
-        owner: "RPCC Help Desk",
+        owner: "Help Desk",
         solution:
           "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       },
       {
         desc:
           "Af fanny pack readymade, food truck thundercats wolf kale chips listicle YOLO squid pickled heirloom man bun hella.",
-        owner: "RPCC Developers",
+        owner: "Developers",
         solution:
           "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       },
       {
         desc: "Snake in da' comode!",
-        owner: "RPCC Developers",
+        owner: "Developers",
         solution:
           "Artisan normcore 90's etsy skateboard meggings VHS, vice neutra synth aesthetic meh. Mustache chambray cardigan pitchfork viral venmo bushwick, dreamcatcher cornhole skateboard. Woke street art chillwave, iPhone roof party listicle farm-to-table green juice umami salvia franzen vice venmo post-ironic. 3 wolf moon seitan kickstarter bicycle rights VHS."
       }
@@ -157,7 +161,7 @@ function App() {
       <div className="App" style={{ marginTop: "2rem" }}>
         <Header as="h2" icon textAlign="center">
           <Icon name="wizard" circular />
-          <Header.Content>RPCC Support Wizard</Header.Content>
+          <Header.Content>Support Wizard</Header.Content>
         </Header>
         <Container>
           <Step.Group attached="top" pointing>

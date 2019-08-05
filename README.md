@@ -1,4 +1,4 @@
-RPCC SUPPORT WIZARD
+SUPPORT WIZARD
 
 To get started :
 
